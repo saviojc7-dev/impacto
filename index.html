@@ -321,10 +321,16 @@
           <p class="text-zinc-500 text-xs sm:text-sm mt-1 font-medium">Avaliação Google</p>
         </div>
       </div>
+
+      <!-- Scroll indicator for mobile, after the stats to avoid overlap -->
+      <div class="flex sm:hidden flex-col items-center gap-2 mt-8 opacity-70">
+        <span class="text-xs text-zinc-300 tracking-widest uppercase font-medium">Scroll</span>
+        <i data-lucide="chevrons-down" class="w-4 h-4 text-zinc-300 animate-bounce"></i>
+      </div>
     </div>
 
     <!-- Scroll indicator -->
-    <div class="flex absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-2 opacity-70">
+    <div class="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-2 opacity-70">
       <span class="text-xs text-zinc-300 tracking-widest uppercase font-medium">Scroll</span>
       <i data-lucide="chevrons-down" class="w-4 h-4 text-zinc-300 animate-bounce"></i>
     </div>

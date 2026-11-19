@@ -263,7 +263,7 @@
     <!-- Content -->
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
 
-      <p class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.2em] text-white mb-5">
+      <p class="inline-flex items-center bg-zinc-950/75 border border-white/20 rounded-full px-4 py-2 font-heading font-bold text-sm sm:text-base uppercase tracking-[0.2em] text-white mb-5 backdrop-blur-sm">
         Teotônio Vilela – AL
       </p>
 
@@ -440,19 +440,19 @@
     <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-3 rounded-2xl overflow-hidden">
       <figure class="relative group rounded-xl overflow-hidden">
         <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Treino" class="w-full h-40 object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
-        <figcaption class="absolute inset-0 flex items-center justify-center bg-black/35 font-heading font-black uppercase tracking-wider text-white text-lg sm:text-xl">Foco</figcaption>
+        <figcaption class="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/75 via-black/25 to-black/10 font-heading font-black uppercase tracking-wider text-white text-lg sm:text-xl">Foco</figcaption>
       </figure>
       <figure class="relative group rounded-xl overflow-hidden">
         <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Musculação" class="w-full h-40 object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
-        <figcaption class="absolute inset-0 flex items-center justify-center bg-black/35 font-heading font-black uppercase tracking-wider text-white text-lg sm:text-xl">Evolução</figcaption>
+        <figcaption class="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/75 via-black/25 to-black/10 font-heading font-black uppercase tracking-wider text-white text-lg sm:text-xl">Evolução</figcaption>
       </figure>
       <figure class="relative group rounded-xl overflow-hidden">
         <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Treino pesado" class="w-full h-40 object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
-        <figcaption class="absolute inset-0 flex items-center justify-center bg-black/35 font-heading font-black uppercase tracking-wider text-white text-lg sm:text-xl">Disciplina</figcaption>
+        <figcaption class="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/75 via-black/25 to-black/10 font-heading font-black uppercase tracking-wider text-white text-lg sm:text-xl">Disciplina</figcaption>
       </figure>
       <figure class="relative group rounded-xl overflow-hidden">
         <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Academia" class="w-full h-40 object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
-        <figcaption class="absolute inset-0 flex items-center justify-center bg-black/35 font-heading font-black uppercase tracking-wider text-white text-lg sm:text-xl">Superação</figcaption>
+        <figcaption class="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/75 via-black/25 to-black/10 font-heading font-black uppercase tracking-wider text-white text-lg sm:text-xl">Superação</figcaption>
       </figure>
     </div>
   </section>
@@ -544,6 +544,12 @@
               <option value="ganho-de-massa">Ganho de massa</option>
               <option value="nao-sei">Ainda não sei</option>
             </select>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label for="nome" class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500">Seu nome (opcional)</label>
+            <input type="text" id="nome" autocomplete="given-name" placeholder="Como podemos te chamar?"
+              class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white text-sm placeholder:text-zinc-600 transition-colors" />
           </div>
 
         </div>
@@ -711,7 +717,7 @@
           <!-- Selo -->
           <div class="absolute top-3 left-1/2 -translate-x-1/2">
             <span class="bg-white text-black font-heading font-black text-xs uppercase tracking-widest px-4 py-1.5 rounded-full whitespace-nowrap">
-              ⭐ Melhor Custo-Benefício
+              Economize R$ 120/ano
             </span>
           </div>
 
@@ -776,6 +782,7 @@
           O que dizem sobre a Impacto.
         </h2>
         <p id="google-reviews-summary" class="text-zinc-400 text-sm mt-4">4,6★ no Google · 47 avaliações</p>
+        <p class="font-heading font-bold text-sm text-white mt-4">Mais de 500 alunos ativos na Impacto</p>
       </div>
       <div id="google-reviews-list" class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
@@ -1097,11 +1104,13 @@
       analiseBox.className = `border rounded-2xl p-5 border-zinc-700 bg-zinc-800/40`;
 
       // Dynamic WA button with results
+      const nome = document.getElementById('nome').value.trim();
+      const saudacao = nome ? `Olá, ${nome}!` : 'Olá!';
       const sexoLabel = sexo === 'M' ? 'Masculino' : 'Feminino';
       const fatorLabel = document.getElementById('atividade').options[document.getElementById('atividade').selectedIndex].text;
       const focoSelect = document.getElementById('foco');
       const focoLabel = focoSelect.options[focoSelect.selectedIndex].text;
-      const msgResultado = `👋 Olá! Calculei meu IMC e TMB pelo site da Impacto Academia e gostaria de receber um treino personalizado!\n\n📊 *Meus dados:*\n• Sexo: ${sexoLabel}\n• Idade: ${idade} anos\n• Peso: ${peso} kg\n• Altura: ${alturaCm} cm\n• Atividade: ${fatorLabel}\n• Foco: ${focoLabel}\n\n📈 *Resultados:*\n• IMC: ${imcFixed} (${imcLabel})\n• TMB: ${tmb} kcal/dia\n• Gasto Total: ${get} kcal/dia\n\nPode me indicar o treino ideal?`;
+      const msgResultado = `👋 ${saudacao} Calculei meu IMC e TMB pelo site da Impacto Academia e gostaria de receber um treino personalizado!\n\n📊 *Meus dados:*\n• Sexo: ${sexoLabel}\n• Idade: ${idade} anos\n• Peso: ${peso} kg\n• Altura: ${alturaCm} cm\n• Atividade: ${fatorLabel}\n• Foco: ${focoLabel}\n\n📈 *Resultados:*\n• IMC: ${imcFixed} (${imcLabel})\n• TMB: ${tmb} kcal/dia\n• Gasto Total: ${get} kcal/dia\n\nPode me indicar o treino ideal?`;
 
       document.getElementById('wa-resultado').href = waLink(msgResultado);
 

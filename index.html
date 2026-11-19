@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Impacto Academia em Teotônio Vilela – AL | Treino e Planos</title>
-  <meta name="description" content="Treine na Impacto Academia em Teotônio Vilela, AL. Conheça nossos equipamentos, acompanhamento profissional e planos." />
+  <title>Impacto Academia e Move Fisioterapia em Teotônio Vilela – AL</title>
+  <meta name="description" content="Treine na Impacto Academia e conheça a Move Fisioterapia em Teotônio Vilela, AL. Planos de academia e atendimento clínico independente." />
 
   <!-- Prévia ao compartilhar no WhatsApp e redes sociais -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
-  <meta property="og:title" content="Impacto Academia em Teotônio Vilela – AL" />
-  <meta property="og:description" content="Treine na Impacto Academia em Teotônio Vilela, AL. Conheça nossos equipamentos, acompanhamento profissional e planos." />
+  <meta property="og:title" content="Impacto Academia e Move Fisioterapia em Teotônio Vilela – AL" />
+  <meta property="og:description" content="Treine na Impacto Academia e conheça a Move Fisioterapia em Teotônio Vilela, AL. Planos de academia e atendimento clínico independente." />
   <meta property="og:image" content="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&amp;q=85&amp;fm=jpg&amp;fit=crop&amp;sat=-100" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -74,7 +74,6 @@
     }
 
     .hero-video {
-      display: block;
       background: #09090b;
       opacity: 0;
       object-fit: cover;
@@ -195,15 +194,16 @@
 
         <!-- Logo -->
         <a href="#hero" class="flex items-center gap-3 select-none">
-          <img src="logo.jpg" alt="Impacto Academia" class="h-10 w-10 object-contain rounded-lg" />
+          <img src="logo.png" alt="Impacto Academia" class="h-10 w-10 object-contain rounded-lg" />
           <span class="font-heading font-black text-lg tracking-widest uppercase text-white">IMPACTO<span class="text-zinc-500">.</span></span>
         </a>
 
         <!-- Desktop nav -->
-        <div class="hidden md:flex items-center gap-8">
+        <div class="hidden md:flex items-center gap-4 lg:gap-8">
           <a href="#diferenciais" class="nav-link text-sm text-zinc-400 hover:text-white font-medium tracking-wide transition-colors">Diferenciais</a>
           <a href="#calculadora" class="nav-link text-sm text-zinc-400 hover:text-white font-medium tracking-wide transition-colors">Calculadora</a>
           <a href="#planos" class="nav-link text-sm text-zinc-400 hover:text-white font-medium tracking-wide transition-colors">Planos</a>
+          <a href="#fisioterapia" class="nav-link text-sm text-zinc-400 hover:text-white font-medium tracking-wide transition-colors">Fisioterapia</a>
           <a href="#contato" class="nav-link text-sm text-zinc-400 hover:text-white font-medium tracking-wide transition-colors">Contato</a>
         </div>
 
@@ -227,6 +227,7 @@
         <a href="#diferenciais" class="mobile-link text-sm text-zinc-300 hover:text-white font-medium py-1 transition-colors">Diferenciais</a>
         <a href="#calculadora" class="mobile-link text-sm text-zinc-300 hover:text-white font-medium py-1 transition-colors">Calculadora IMC/TMB</a>
         <a href="#planos" class="mobile-link text-sm text-zinc-300 hover:text-white font-medium py-1 transition-colors">Planos</a>
+        <a href="#fisioterapia" class="mobile-link text-sm text-zinc-300 hover:text-white font-medium py-1 transition-colors">Fisioterapia</a>
         <a href="#contato" class="mobile-link text-sm text-zinc-300 hover:text-white font-medium py-1 transition-colors">Contato</a>
         <a href="https://api.whatsapp.com/send?phone=5582981252481&amp;text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20a%20aula%20gr%C3%A1tis%20na%20Impacto%20Academia%21"
            target="_blank" rel="noopener"
@@ -242,7 +243,7 @@
 
     <!-- Background video (local) -->
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <video id="hero-video" class="hero-video"
+      <video id="hero-video-desktop" class="hero-video hidden md:block"
         autoplay
         muted
         defaultMuted
@@ -257,13 +258,28 @@
       >
         <source src="Freaky Season 47-Treino de Alma - trecho central de 30 segundos.mp4" type="video/mp4" />
       </video>
+      <video id="hero-video-mobile" class="hero-video is-playing block md:hidden"
+        autoplay
+        muted
+        defaultMuted
+        loop
+        playsinline
+        webkit-playsinline
+        x5-playsinline
+        preload="none"
+        poster="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&amp;q=80&amp;fm=jpg&amp;fit=crop&amp;sat=-100"
+        aria-hidden="true"
+        style="position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover;pointer-events:none;"
+      >
+        <!-- TODO: add <source src="hero-mobile.mp4" type="video/mp4" /> when the vertical asset is ready. -->
+      </video>
       <div class="hero-overlay absolute inset-0"></div>
     </div>
 
     <!-- Content -->
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
 
-      <p class="inline-flex items-center bg-zinc-950/75 border border-white/20 rounded-full px-4 py-2 font-heading font-bold text-sm sm:text-base uppercase tracking-[0.2em] text-white mb-5 backdrop-blur-sm">
+      <p class="inline-flex items-center bg-zinc-950/75 border border-white/20 rounded-full px-4 py-2 font-heading font-bold text-sm sm:text-[1rem] uppercase tracking-[0.2em] text-white mb-5 backdrop-blur-sm">
         Teotônio Vilela – AL
       </p>
 
@@ -509,7 +525,7 @@
           <!-- Idade -->
           <div class="flex flex-col gap-2">
             <label for="idade" class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500">Idade</label>
-            <input type="number" id="idade" placeholder="Ex: 25" min="10" max="99"
+            <input type="number" id="idade" placeholder="Ex: 25" min="10" max="100"
               class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white text-sm placeholder:text-zinc-600 transition-colors" />
           </div>
 
@@ -523,7 +539,7 @@
           <!-- Altura -->
           <div class="flex flex-col gap-2">
             <label for="altura" class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500">Altura (cm)</label>
-            <input type="number" id="altura" placeholder="Ex: 175" min="100" max="250"
+            <input type="number" id="altura" placeholder="Ex: 175 ou 1.75" min="100" max="250" step="any"
               class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white text-sm placeholder:text-zinc-600 transition-colors" />
           </div>
 
@@ -549,6 +565,7 @@
               <option value="emagrecimento">Emagrecimento</option>
               <option value="ganho-de-massa">Ganho de massa</option>
               <option value="nao-sei">Ainda não sei</option>
+              <option value="reabilitacao-fisioterapia">Reabilitação / Fisioterapia</option>
             </select>
           </div>
 
@@ -779,6 +796,130 @@
   <!-- separator -->
   <div class="h-px sep"></div>
 
+  <!-- ═══════════════════════════ MOVE FISIOTERAPIA ═══════════════════════════ -->
+  <section id="fisioterapia" class="py-24 bg-zinc-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <img src="move_logo.png" alt="Logo da Move Fisioterapia e do Dr. Moacir Francisco"
+             loading="lazy" decoding="async"
+             class="w-40 h-20 sm:w-48 sm:h-24 object-cover object-[center_55%] rounded-xl border border-zinc-800 mx-auto mb-6" />
+        <p class="text-xs font-heading font-bold uppercase tracking-[0.3em] text-zinc-500 mb-4">Saúde &amp; Reabilitação Integrada</p>
+        <h2 class="font-heading font-black uppercase text-white leading-tight mb-5" style="font-size: clamp(2rem, 4vw, 3.2rem);">
+          Move Fisioterapia
+        </h2>
+        <p class="text-zinc-300 text-sm sm:text-[1rem] leading-relaxed">
+          Atendimento fisioterapêutico especializado para quem busca reabilitação, alívio de dores e prevenção de lesões — com suporte direto ao lado do seu treino.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="bg-zinc-900/70 border border-zinc-800 rounded-2xl p-7 flex flex-col gap-5">
+          <div class="w-12 h-12 rounded-xl bg-zinc-800 flex items-center justify-center">
+            <i data-lucide="activity" class="w-6 h-6 text-white"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-white text-lg uppercase tracking-wide mb-3">Fisioterapia Ortopédica &amp; Esportiva</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">
+              Tratamento de lesões musculares, articulares, coluna, joelho e ombro com foco no retorno seguro às atividades.
+            </p>
+          </div>
+        </article>
+
+        <article class="bg-zinc-900/70 border border-zinc-800 rounded-2xl p-7 flex flex-col gap-5">
+          <div class="w-12 h-12 rounded-xl bg-zinc-800 flex items-center justify-center">
+            <i data-lucide="scan" class="w-6 h-6 text-white"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-white text-lg uppercase tracking-wide mb-3">Avaliação Biomecânica &amp; Postural</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">
+              Análise individual do movimento para identificar desequilíbrios, corrigir padrões e evitar sobrecargas durante os exercícios.
+            </p>
+          </div>
+        </article>
+
+        <article class="bg-zinc-900/70 border border-zinc-800 rounded-2xl p-7 flex flex-col gap-5">
+          <div class="w-12 h-12 rounded-xl bg-zinc-800 flex items-center justify-center">
+            <i data-lucide="heart" class="w-6 h-6 text-white"></i>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-white text-lg uppercase tracking-wide mb-3">Liberação Miofascial &amp; Mobilidade</h3>
+            <p class="text-zinc-400 text-sm leading-relaxed">
+              Recuperação muscular acelerada, ganho de amplitude articular e redução de tensões para melhorar sua performance.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-10 rounded-2xl border border-zinc-700 bg-zinc-900 p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div class="text-center lg:text-left">
+          <h3 class="font-heading font-bold text-white uppercase tracking-wide mb-2">Agende sua avaliação</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed max-w-2xl">
+            Atendimento clínico independente dos planos e cobranças da Impacto Academia. Consultas e valores são tratados diretamente com a Move Fisioterapia.
+          </p>
+        </div>
+        <div class="flex flex-col lg:flex-row items-center gap-3 w-full lg:w-auto pr-14">
+          <a href="https://api.whatsapp.com/send?phone=5582981252481&amp;text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Impacto%20Academia%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20Move%20Fisioterapia."
+             target="_blank" rel="noopener"
+             class="btn-primary inline-flex w-full lg:w-auto items-center justify-center gap-2 bg-white text-black font-heading font-bold uppercase tracking-wide text-xs sm:text-sm px-6 py-3.5 rounded-full text-center">
+            <i data-lucide="calendar-check" class="w-4 h-4"></i>
+            Agendar consulta / avaliação
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- separator -->
+  <div class="h-px sep"></div>
+
+  <!-- ═══════════════════════════ QUEM CUIDA DE VOCÊ ═══════════════════════════ -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div class="relative min-h-[360px] rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900">
+        <img src="moacir.jpg" alt="Dr. Moacir Francisco, fisioterapeuta e educador físico"
+             loading="lazy" decoding="async"
+             class="absolute inset-0 w-full h-full object-cover object-top" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+        <div class="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-6 bg-black/70 border border-zinc-700 rounded-xl px-4 py-3 backdrop-blur-sm">
+          <p class="font-heading font-bold text-white text-sm">Dr. Moacir Francisco</p>
+          <p class="text-zinc-300 text-xs mt-1">CREFITO 369795-F</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-xs font-heading font-bold uppercase tracking-[0.3em] text-zinc-500 mb-4">Direção Clínica &amp; Técnica</p>
+        <h2 class="font-heading font-black uppercase text-white leading-tight mb-6" style="font-size: clamp(2rem, 4vw, 3rem);">
+          Quem cuida de você.
+        </h2>
+        <p class="text-zinc-300 text-sm sm:text-[1rem] leading-relaxed mb-7">
+          Dr. Moacir Francisco é fisioterapeuta e educador físico, com especialização em Osteopatia, Quiropraxia, Traumato-ortopedia e pós-reabilitação. Sua atuação une conhecimento acadêmico, ciência e visão prática para identificar e tratar a verdadeira causa da dor. Com atendimento individualizado — inclusive na modalidade domiciliar —, integra terapias manuais, correção funcional e treino personalizado para promover reabilitação eficaz, prevenção de lesões e equilíbrio corporal.
+        </p>
+        <ul class="flex flex-col gap-3 mb-8">
+          <li class="flex items-start gap-3 text-sm text-zinc-300">
+            <i data-lucide="check" class="w-4 h-4 text-white flex-shrink-0 mt-0.5"></i>
+            Fisioterapeuta e educador físico
+          </li>
+          <li class="flex items-start gap-3 text-sm text-zinc-300">
+            <i data-lucide="check" class="w-4 h-4 text-white flex-shrink-0 mt-0.5"></i>
+            Especialização em Osteopatia, Quiropraxia e Traumato-ortopedia
+          </li>
+          <li class="flex items-start gap-3 text-sm text-zinc-300">
+            <i data-lucide="check" class="w-4 h-4 text-white flex-shrink-0 mt-0.5"></i>
+            Atendimento individualizado, inclusive domiciliar
+          </li>
+        </ul>
+        <a href="https://www.instagram.com/move_fisioterapiaa/" target="_blank" rel="noopener"
+           class="btn-outline inline-flex items-center gap-2 border border-zinc-600 text-white font-heading font-bold uppercase tracking-wide text-xs sm:text-sm px-6 py-3.5 rounded-full">
+          Conhecer a Move Fisioterapia
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- separator -->
+  <div class="h-px sep"></div>
+
   <!-- ═══════════════════════════ AVALIAÇÕES GOOGLE ═══════════════════════════ -->
   <section class="py-24 bg-zinc-900/20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -876,9 +1017,14 @@
           <a href="https://www.instagram.com/impact.oacademia/" target="_blank" rel="noopener"
              class="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-sm font-medium group">
             <div class="w-8 h-8 rounded-lg overflow-hidden group-hover:opacity-80 transition-opacity">
-              <img src="instagram.jpg" alt="Instagram" class="w-full h-full object-cover" />
+              <img src="instagram.png" alt="Instagram" class="w-full h-full object-cover" />
             </div>
             @impact.oacademia
+          </a>
+          <a href="https://www.instagram.com/move_fisioterapiaa/" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 mt-3 text-xs text-zinc-500 hover:text-white transition-colors">
+            <img src="move_logo.png" alt="" loading="lazy" decoding="async" class="w-12 h-8 object-cover object-[center_55%] rounded border border-zinc-800" />
+            Clínica integrada: @move_fisioterapiaa
           </a>
         </div>
 
@@ -967,49 +1113,71 @@
     const WA_NUMBER = '5582981252481'; 
 
     function waLink(msg) {
-      // encodeURI preserva emojis Unicode; evita corrupção no WhatsApp
-      return `https://wa.me/${WA_NUMBER}?text=${encodeURI(msg)}`;
+      return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
     }
 
     // ─── WhatsApp links iniciais ───────────────────────────
     // ─── Vídeo de fundo ───────────────────────────────────
-    const heroVideo = document.getElementById('hero-video');
-    if (heroVideo) {
-      heroVideo.muted = true;
-      heroVideo.defaultMuted = true;
-      heroVideo.playsInline = true;
-      heroVideo.setAttribute('muted', '');
-      heroVideo.setAttribute('playsinline', '');
-      heroVideo.setAttribute('webkit-playsinline', '');
+    const heroVideoDesktop = document.getElementById('hero-video-desktop');
+    const heroVideoMobile = document.getElementById('hero-video-mobile');
+    const heroIsDesktop = window.matchMedia('(min-width: 768px)');
+    const heroVideos = [heroVideoDesktop, heroVideoMobile].filter(Boolean);
 
-      const iniciarVideoDeFundo = () => {
-        if (!document.hidden) heroVideo.play().catch(() => {});
-      };
+    function videoHeroAtivo() {
+      return heroIsDesktop.matches ? heroVideoDesktop : heroVideoMobile;
+    }
 
-      heroVideo.addEventListener('loadeddata', iniciarVideoDeFundo, { once: true });
-      heroVideo.addEventListener('loadedmetadata', iniciarVideoDeFundo);
-      heroVideo.addEventListener('canplay', iniciarVideoDeFundo);
-      heroVideo.addEventListener('playing', () => heroVideo.classList.add('is-playing'));
-      iniciarVideoDeFundo();
+    function iniciarVideoDeFundo(video) {
+      const source = video && video.querySelector('source');
+      if (source && source.getAttribute('src') && !document.hidden) {
+        video.play().catch(() => {});
+      }
+    }
 
-      // Se o navegador bloquear o autoplay, a primeira interação do usuário o libera.
-      const retomarVideoDeFundo = () => {
-        if (heroVideo.paused) iniciarVideoDeFundo();
-        if (!heroVideo.paused) {
-          document.removeEventListener('touchstart', retomarVideoDeFundo);
-          document.removeEventListener('pointerdown', retomarVideoDeFundo);
+    heroVideos.forEach(video => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+
+      video.addEventListener('loadeddata', () => iniciarVideoDeFundo(video), { once: true });
+      video.addEventListener('loadedmetadata', () => iniciarVideoDeFundo(video));
+      video.addEventListener('canplay', () => iniciarVideoDeFundo(video));
+      video.addEventListener('playing', () => video.classList.add('is-playing'));
+    });
+
+    function atualizarVideoDeFundo() {
+      const videoAtivo = videoHeroAtivo();
+      heroVideos.forEach(video => {
+        if (video === videoAtivo) {
+          iniciarVideoDeFundo(video);
+        } else {
+          video.pause();
         }
-      };
-      document.addEventListener('touchstart', retomarVideoDeFundo, { passive: true });
-      document.addEventListener('pointerdown', retomarVideoDeFundo, { passive: true });
-
-      document.addEventListener('visibilitychange', () => {
-        if (!document.hidden && heroVideo.paused) iniciarVideoDeFundo();
-      });
-      window.addEventListener('pageshow', () => {
-        if (heroVideo.paused) iniciarVideoDeFundo();
       });
     }
+
+    atualizarVideoDeFundo();
+    window.addEventListener('resize', atualizarVideoDeFundo);
+
+    // Se o navegador bloquear o autoplay, a primeira interação do usuário o libera.
+    const retomarVideoDeFundo = () => {
+      const video = videoHeroAtivo();
+      if (video && video.paused) iniciarVideoDeFundo(video);
+      if (video && !video.paused) {
+        document.removeEventListener('touchstart', retomarVideoDeFundo);
+        document.removeEventListener('pointerdown', retomarVideoDeFundo);
+      }
+    };
+    document.addEventListener('touchstart', retomarVideoDeFundo, { passive: true });
+    document.addEventListener('pointerdown', retomarVideoDeFundo, { passive: true });
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) atualizarVideoDeFundo();
+    });
+    window.addEventListener('pageshow', atualizarVideoDeFundo);
 
     // ─── Navbar scroll ────────────────────────────────────
     window.addEventListener('scroll', () => {
@@ -1047,11 +1215,15 @@
     function calcular() {
       const idade = parseInt(document.getElementById('idade').value);
       const peso = parseFloat(document.getElementById('peso').value);
-      const alturaCm = parseFloat(document.getElementById('altura').value);
+      let alturaCm = parseFloat(document.getElementById('altura').value);
       const fator = parseFloat(document.getElementById('atividade').value);
 
-      if (!idade || !peso || !alturaCm || isNaN(idade) || isNaN(peso) || isNaN(alturaCm)) {
-        alert('Por favor, preencha todos os campos corretamente.');
+      if (alturaCm > 0 && alturaCm < 3) alturaCm *= 100;
+
+      if (!Number.isFinite(idade) || idade < 10 || idade > 100 ||
+          !Number.isFinite(peso) || peso < 30 || peso > 300 ||
+          !Number.isFinite(alturaCm) || alturaCm < 100 || alturaCm > 250) {
+        alert('Confira os dados: idade entre 10 e 100 anos, peso entre 30 e 300 kg e altura entre 100 e 250 cm. Se informar a altura em metros, use um valor como 1.75.');
         return;
       }
 
@@ -1116,7 +1288,10 @@
       const fatorLabel = document.getElementById('atividade').options[document.getElementById('atividade').selectedIndex].text;
       const focoSelect = document.getElementById('foco');
       const focoLabel = focoSelect.options[focoSelect.selectedIndex].text;
-      const msgResultado = `👋 ${saudacao} Calculei meu IMC e TMB pelo site da Impacto Academia e gostaria de receber um treino personalizado!\n\n📊 *Meus dados:*\n• Sexo: ${sexoLabel}\n• Idade: ${idade} anos\n• Peso: ${peso} kg\n• Altura: ${alturaCm} cm\n• Atividade: ${fatorLabel}\n• Foco: ${focoLabel}\n\n📈 *Resultados:*\n• IMC: ${imcFixed} (${imcLabel})\n• TMB: ${tmb} kcal/dia\n• Gasto Total: ${get} kcal/dia\n\nPode me indicar o treino ideal?`;
+      const objetivoMensagem = focoSelect.value === 'reabilitacao-fisioterapia'
+        ? 'estou buscando acompanhamento voltado para reabilitação e prevenção de lesões junto à equipe da Move Fisioterapia.'
+        : 'gostaria de receber um treino personalizado!';
+      const msgResultado = `👋 ${saudacao} Calculei meu IMC e TMB pelo site da Impacto Academia e ${objetivoMensagem}\n\n📊 *Meus dados:*\n• Sexo: ${sexoLabel}\n• Idade: ${idade} anos\n• Peso: ${peso} kg\n• Altura: ${alturaCm} cm\n• Atividade: ${fatorLabel}\n• Foco: ${focoLabel}\n\n📈 *Resultados:*\n• IMC: ${imcFixed} (${imcLabel})\n• TMB: ${tmb} kcal/dia\n• Gasto Total: ${get} kcal/dia\n\nPode me indicar o treino ideal?`;
 
       document.getElementById('wa-resultado').href = waLink(msgResultado);
 
@@ -1154,3 +1329,4 @@
 
 </body>
 </html>
+

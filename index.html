@@ -56,6 +56,24 @@
       background: linear-gradient(135deg, rgba(9,9,11,0.90) 0%, rgba(9,9,11,0.60) 60%, rgba(9,9,11,0.80) 100%);
     }
 
+    /* Mantém o hero estável enquanto o vídeo é preparado no celular. */
+    .hero-section {
+      min-height: 100vh;
+      min-height: 100svh;
+      min-height: 100dvh;
+    }
+
+    .hero-video {
+      display: block;
+      background: #09090b;
+      opacity: 0;
+      object-fit: cover;
+      object-position: center;
+      transition: opacity 0.35s ease;
+    }
+
+    .hero-video.is-playing { opacity: 1; }
+
     /* Noise texture */
     .noise::after {
       content: '';
@@ -208,16 +226,25 @@
   </nav>
 
   <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
-  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden noise">
+  <section id="hero" class="hero-section relative flex items-center justify-center overflow-hidden noise">
 
-    <!-- Background image -->
-    <div class="absolute inset-0 z-0">
-      <img
-        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80&fm=jpg&fit=crop&sat=-100"
-        alt="Academia"
-        class="w-full h-full object-cover object-center"
-        loading="eager"
-      />
+    <!-- Background video (local) -->
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <video id="hero-video" class="hero-video"
+        autoplay
+        muted
+        defaultMuted
+        loop
+        playsinline
+        webkit-playsinline
+        x5-playsinline
+        preload="auto"
+        poster="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80&fm=jpg&fit=crop&sat=-100"
+        aria-hidden="true"
+        style="position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover;pointer-events:none;"
+      >
+        <source src="Freaky Season 47-Treino de Alma - trecho central de 30 segundos.mp4" type="video/mp4" />
+      </video>
       <div class="hero-overlay absolute inset-0"></div>
     </div>
 
@@ -281,7 +308,7 @@
     </div>
 
     <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-50">
+    <div class="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-2 opacity-50">
       <span class="text-xs text-zinc-500 tracking-widest uppercase font-medium">Scroll</span>
       <i data-lucide="chevrons-down" class="w-4 h-4 text-zinc-500 animate-bounce"></i>
     </div>
@@ -883,7 +910,8 @@
     const WA_NUMBER = '5582981252481'; 
 
     function waLink(msg) {
-      return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+      // encodeURI preserva emojis Unicode; evita corrupção no WhatsApp
+      return `https://wa.me/${WA_NUMBER}?text=${encodeURI(msg)}`;
     }
 
     // ─── WhatsApp links iniciais ───────────────────────────
@@ -899,6 +927,45 @@
     document.getElementById('wa-mensal').href = waLink(MSG_MENSAL);
     document.getElementById('wa-semestral').href = waLink(MSG_SEMESTRAL);
     document.getElementById('wa-anual').href = waLink(MSG_ANUAL);
+
+    // ─── Vídeo de fundo ───────────────────────────────────
+    const heroVideo = document.getElementById('hero-video');
+    if (heroVideo) {
+      heroVideo.muted = true;
+      heroVideo.defaultMuted = true;
+      heroVideo.playsInline = true;
+      heroVideo.setAttribute('muted', '');
+      heroVideo.setAttribute('playsinline', '');
+      heroVideo.setAttribute('webkit-playsinline', '');
+
+      const iniciarVideoDeFundo = () => {
+        if (!document.hidden) heroVideo.play().catch(() => {});
+      };
+
+      heroVideo.addEventListener('loadeddata', iniciarVideoDeFundo, { once: true });
+      heroVideo.addEventListener('loadedmetadata', iniciarVideoDeFundo);
+      heroVideo.addEventListener('canplay', iniciarVideoDeFundo);
+      heroVideo.addEventListener('playing', () => heroVideo.classList.add('is-playing'));
+      iniciarVideoDeFundo();
+
+      // Se o navegador bloquear o autoplay, a primeira interação do usuário o libera.
+      const retomarVideoDeFundo = () => {
+        if (heroVideo.paused) iniciarVideoDeFundo();
+        if (!heroVideo.paused) {
+          document.removeEventListener('touchstart', retomarVideoDeFundo);
+          document.removeEventListener('pointerdown', retomarVideoDeFundo);
+        }
+      };
+      document.addEventListener('touchstart', retomarVideoDeFundo, { passive: true });
+      document.addEventListener('pointerdown', retomarVideoDeFundo, { passive: true });
+
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && heroVideo.paused) iniciarVideoDeFundo();
+      });
+      window.addEventListener('pageshow', () => {
+        if (heroVideo.paused) iniciarVideoDeFundo();
+      });
+    }
 
     // ─── Navbar scroll ────────────────────────────────────
     window.addEventListener('scroll', () => {

@@ -199,10 +199,10 @@
 
         <!-- CTA + Hamburger -->
         <div class="flex items-center gap-3">
-          <a href="#calculadora"
-             class="hidden sm:inline-flex btn-primary items-center gap-2 bg-white text-black text-sm font-semibold tracking-wide px-5 py-2 rounded-full uppercase">
-            Aula Grátis
-          </a>
+         <a id="nav-aula-gratis" href="#" target="_blank" rel="noopener"
+   class="hidden sm:inline-flex ...">
+  Aula Grátis
+</a>
           <button id="hamburger" class="md:hidden p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors" aria-label="Menu">
             <i data-lucide="menu" class="w-5 h-5"></i>
           </button>
@@ -217,10 +217,10 @@
         <a href="#calculadora" class="mobile-link text-sm text-zinc-300 hover:text-white font-medium py-1 transition-colors">Calculadora IMC/TMB</a>
         <a href="#planos" class="mobile-link text-sm text-zinc-300 hover:text-white font-medium py-1 transition-colors">Planos</a>
         <a href="#contato" class="mobile-link text-sm text-zinc-300 hover:text-white font-medium py-1 transition-colors">Contato</a>
-        <a href="#calculadora"
-           class="btn-primary inline-flex justify-center bg-white text-black text-sm font-semibold tracking-wide px-5 py-3 rounded-full uppercase mt-1">
-          Aula Grátis
-        </a>
+       <a id="nav-aula-gratis-mobile" href="#" target="_blank" rel="noopener"
+   class="btn-primary inline-flex ...">
+  Aula Grátis
+      </a>
       </div>
     </div>
   </nav>
@@ -1071,6 +1071,11 @@
       const msgResultado = `👋 Olá! Calculei meu IMC e TMB pelo site da Impacto Academia e gostaria de receber um treino personalizado!\n\n📊 *Meus dados:*\n• Sexo: ${sexoLabel}\n• Idade: ${idade} anos\n• Peso: ${peso} kg\n• Altura: ${alturaCm} cm\n• Atividade: ${fatorLabel}\n\n📈 *Resultados:*\n• IMC: ${imcFixed} (${imcLabel})\n• TMB: ${tmb} kcal/dia\n• Gasto Total: ${get} kcal/dia\n\nPode me indicar o treino ideal?`;
 
       document.getElementById('wa-resultado').href = waLink(msgResultado);
+
+      const MSG_AULA_GRATIS = '👋 Olá! Quero agendar minha aula grátis na Impacto Academia!';
+
+      document.getElementById('nav-aula-gratis').href = waLink(MSG_AULA_GRATIS);
+      document.getElementById('nav-aula-gratis-mobile').href = waLink(MSG_AULA_GRATIS);
 
       // Show results
       const resultDiv = document.getElementById('resultado');

@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMPACTO ACADEMIA – Discipline. Results. Power.</title>
+  <meta name="description" content="Impacto Academia: equipamentos modernos, acompanhamento profissional e horários flexíveis. Transforme seu corpo agora." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: '#09090b',
+            surface: '#111113',
+            border: '#27272a',
+            muted: '#71717a',
+            accent: '#a1a1aa',
+          },
+          fontFamily: {
+            heading: ['Montserrat', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    html { background: #09090b; color: #fff; }
+    body { font-family: 'Inter', sans-serif; background: #09090b; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #09090b; }
+    ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 2px; }
+
+    /* Smooth navbar */
+    #navbar { transition: background 0.3s, box-shadow 0.3s; }
+    #navbar.scrolled { background: rgba(9,9,11,0.97); box-shadow: 0 1px 0 #27272a; }
+
+    /* Hero overlay */
+    .hero-overlay {
+      background: linear-gradient(135deg, rgba(9,9,11,0.90) 0%, rgba(9,9,11,0.60) 60%, rgba(9,9,11,0.80) 100%);
+    }
+
+    /* Noise texture */
+    .noise::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Animated underline */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: #fff;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Card hover */
+    .diff-card {
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .diff-card:hover {
+      transform: translateY(-6px);
+      border-color: #fff !important;
+      box-shadow: 0 20px 60px rgba(255,255,255,0.05);
+    }
+
+    /* Plan card hover */
+    .plan-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .plan-card:hover { transform: translateY(-4px); }
+
+    /* Button animations */
+    .btn-primary {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(255,255,255,0.20);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+    .btn-outline:hover { background: #fff; color: #09090b; transform: translateY(-2px); }
+
+    /* Shimmer on featured plan */
+    .plan-featured {
+      position: relative;
+      overflow: hidden;
+    }
+    .plan-featured::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%;
+      width: 40%; height: 200%;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.04), transparent);
+      transform: skewX(-15deg);
+      animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer { to { left: 160%; } }
+
+    /* IMC meter */
+    .imc-bar { transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
+
+    /* Floating WA */
+    #wa-float {
+      animation: pulse-wa 2.5s infinite;
+    }
+    @keyframes pulse-wa {
+      0%,100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+    }
+
+    /* Mobile menu */
+    #mobile-menu {
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    #mobile-menu.open { max-height: 400px; opacity: 1; }
+
+    /* Input focus */
+    input[type=number]:focus, select:focus {
+      outline: none;
+      border-color: #fff !important;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+    /* Section separator */
+    .sep { background: linear-gradient(90deg, transparent, #27272a, transparent); }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-3 select-none">
+          <img src="logo.jpg" alt="Impacto Academia" class="h-10 w-10 object-contain rounded-lg" />
+          <span class="font-heading font-black text-lg tracking-widest uppercase text-white">IMPACTO<span class="text-zinc-500">.</span></span>
+        </a>
+
+        <!-- Desktop nav -->
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#diferenciais" class="nav-link text-sm text-zinc-400 hover:text-white font-medium tracking-wide transition-colors">Diferenciais</a>
+          <a href="#calculadora" class="nav-link text-sm text-zinc-400 hover:text-white font-medium tracking-wide transition-colors">Calculadora</a>
+          <a href="#planos" class="nav-link text-sm text-zinc-400 hover:text-white font-medium tracking-wide transition-colors">Planos</a>
+          <a href="#contato" class="nav-link text-sm text-zinc-400 hover:text-white font-medium tracking-wide transition-colors">Contato</a>
+        </div>
+
+        <!-- CTA + Hamburger -->
+        <div class="flex items-center gap-3">
+          <a href="#calculadora"
+             class="hidden sm:inline-flex btn-primary items-center gap-2 bg-white text-black text-sm font-semibold tracking-wide px-5 py-2 rounded-full uppercase">
+            Aula Grátis
+          </a>
+          <button id="hamburger" class="md:hidden p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors" aria-label="Menu">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden bg-base border-t border-zinc-800">
+      <div class="px-4 py-4 flex flex-col gap-4">
+        <a href="#diferenciais" class="mobile-link text-sm text-zinc-300 hover:text-white font-medium py-1 transition-colors">Diferenciais</a>
+        <a href="#calculadora" class="mobile-link text-sm text-zinc-300 hover:text-white font-medium py-1 transition-colors">Calculadora IMC/TMB</a>
+        <a href="#planos" class="mobile-link text-sm text-zinc-300 hover:text-white font-medium py-1 transition-colors">Planos</a>
+        <a href="#contato" class="mobile-link text-sm text-zinc-300 hover:text-white font-medium py-1 transition-colors">Contato</a>
+        <a href="#calculadora"
+           class="btn-primary inline-flex justify-center bg-white text-black text-sm font-semibold tracking-wide px-5 py-3 rounded-full uppercase mt-1">
+          Aula Grátis
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden noise">
+
+    <!-- Background image -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80&fm=jpg&fit=crop&sat=-100"
+        alt="Academia"
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+      />
+      <div class="hero-overlay absolute inset-0"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-zinc-900/80 border border-zinc-700 rounded-full px-4 py-1.5 mb-8">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+        <span class="text-xs text-zinc-300 font-medium tracking-widest uppercase">Matricule-se agora</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="font-heading font-black uppercase leading-none text-white mb-6"
+          style="font-size: clamp(2.8rem, 8vw, 6.5rem); letter-spacing: -0.02em; text-shadow: 0 2px 40px rgba(0,0,0,0.6);">
+        Disciplina<br/>
+        <span class="text-zinc-400">é o único</span><br/>
+        atalho real.
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-zinc-300 font-body font-light max-w-2xl mx-auto mb-10 leading-relaxed"
+         style="font-size: clamp(1rem, 2vw, 1.2rem);">
+        Chega de excuses. Na Impacto Academia você encontra
+        <strong class="text-white font-semibold">equipamentos de alto nível</strong>,
+        instrutores que cobram resultados e uma estrutura pensada para quem leva o treino a sério.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a id="cta-hero-wa"
+           href="#"
+           target="_blank"
+           rel="noopener"
+           class="btn-primary inline-flex items-center gap-3 bg-white text-black font-heading font-bold uppercase tracking-wider text-sm px-8 py-4 rounded-full w-full sm:w-auto justify-center">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          Começar agora no WhatsApp
+        </a>
+        <a href="#planos"
+           class="btn-outline inline-flex items-center gap-2 border border-zinc-600 text-white font-semibold text-sm px-8 py-4 rounded-full w-full sm:w-auto justify-center">
+          Ver planos
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="mt-20 grid grid-cols-3 gap-4 sm:gap-8 max-w-lg mx-auto">
+        <div class="text-center">
+          <p class="font-heading font-black text-white text-3xl sm:text-4xl">+500</p>
+          <p class="text-zinc-500 text-xs sm:text-sm mt-1 font-medium">Alunos ativos</p>
+        </div>
+        <div class="text-center border-x border-zinc-800">
+          <p class="font-heading font-black text-white text-3xl sm:text-4xl">16h</p>
+          <p class="text-zinc-500 text-xs sm:text-sm mt-1 font-medium">Funcionamento diário</p>
+        </div>
+        <div class="text-center">
+          <p class="font-heading font-black text-white text-3xl sm:text-4xl">5★</p>
+          <p class="text-zinc-500 text-xs sm:text-sm mt-1 font-medium">Avaliação Google</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-50">
+      <span class="text-xs text-zinc-500 tracking-widest uppercase font-medium">Scroll</span>
+      <i data-lucide="chevrons-down" class="w-4 h-4 text-zinc-500 animate-bounce"></i>
+    </div>
+  </section>
+
+  <!-- separator -->
+  <div class="h-px sep"></div>
+
+  <!-- ═══════════════════════════ DIFERENCIAIS ═══════════════════════════ -->
+  <section id="diferenciais" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-16">
+      <p class="text-xs font-heading font-bold uppercase tracking-[0.3em] text-zinc-500 mb-4">Por que a Impacto?</p>
+      <h2 class="font-heading font-black uppercase text-white leading-tight"
+          style="font-size: clamp(2rem, 4vw, 3.2rem);">
+        Feita para quem<br/>quer resultado de verdade.
+      </h2>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <!-- Card 1 -->
+      <div class="diff-card bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8 flex flex-col gap-5">
+        <div class="w-12 h-12 rounded-xl bg-zinc-800 flex items-center justify-center">
+          <i data-lucide="dumbbell" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-white text-xl uppercase tracking-wide mb-2">Equipamentos Modernos</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed font-body">
+            Aparelhos de última geração em perfeito estado — sem fila, sem desculpa. Estrutura completa para musculação, cardio e treino funcional de alto desempenho.
+          </p>
+        </div>
+        <div class="mt-auto pt-4 border-t border-zinc-800">
+          <ul class="flex flex-col gap-2">
+            <li class="flex items-center gap-2 text-xs text-zinc-400">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-zinc-300 flex-shrink-0"></i>
+              Manutenção semanal garantida
+            </li>
+            <li class="flex items-center gap-2 text-xs text-zinc-400">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-zinc-300 flex-shrink-0"></i>
+              Área de peso livre completa
+            </li>
+            <li class="flex items-center gap-2 text-xs text-zinc-400">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-zinc-300 flex-shrink-0"></i>
+              Esteiras para cardios e treino funcional
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="diff-card bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8 flex flex-col gap-5">
+        <div class="w-12 h-12 rounded-xl bg-zinc-800 flex items-center justify-center">
+          <i data-lucide="user-check" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-white text-xl uppercase tracking-wide mb-2">Acompanhamento Profissional</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed font-body">
+            Instrutores formados e presentes no salão — sem ficar no celular, sem ignorar aluno. Avaliação física, montagem de treino personalizada e revisão periódica incluídas.
+          </p>
+        </div>
+        <div class="mt-auto pt-4 border-t border-zinc-800">
+          <ul class="flex flex-col gap-2">
+            <li class="flex items-center gap-2 text-xs text-zinc-400">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-zinc-300 flex-shrink-0"></i>
+              Avaliação física gratuita
+            </li>
+            <li class="flex items-center gap-2 text-xs text-zinc-400">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-zinc-300 flex-shrink-0"></i>
+              Treino individualizado
+            </li>
+            <li class="flex items-center gap-2 text-xs text-zinc-400">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-zinc-300 flex-shrink-0"></i>
+              Suporte direto via WhatsApp
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="diff-card bg-zinc-900/50 border border-zinc-800 rounded-2xl p-8 flex flex-col gap-5">
+        <div class="w-12 h-12 rounded-xl bg-zinc-800 flex items-center justify-center">
+          <i data-lucide="clock" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <h3 class="font-heading font-bold text-white text-xl uppercase tracking-wide mb-2">Horários Flexíveis</h3>
+          <p class="text-zinc-400 text-sm leading-relaxed font-body">
+            Abre cedo, fecha tarde. Pensada para quem trabalha, estuda e ainda encontra tempo para treinar — de seg a sábado sem interrupção.
+          </p>
+        </div>
+        <div class="mt-auto pt-4 border-t border-zinc-800">
+          <ul class="flex flex-col gap-2">
+            <li class="flex items-center gap-2 text-xs text-zinc-400">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-zinc-300 flex-shrink-0"></i>
+              Seg–Sex: 05h30 às 22h
+            </li>
+            <li class="flex items-center gap-2 text-xs text-zinc-400">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-zinc-300 flex-shrink-0"></i>
+              Sábado: 07h às 14h
+            </li>
+            <li class="flex items-center gap-2 text-xs text-zinc-400">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-zinc-300 flex-shrink-0"></i>
+              Domingo: Consulte disponibilidade
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Gallery strip -->
+    <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-3 rounded-2xl overflow-hidden">
+      <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Treino" class="w-full h-40 object-cover rounded-xl opacity-70 hover:opacity-100 transition-opacity duration-300" />
+      <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Musculação" class="w-full h-40 object-cover rounded-xl opacity-70 hover:opacity-100 transition-opacity duration-300" />
+      <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Treino pesado" class="w-full h-40 object-cover rounded-xl opacity-70 hover:opacity-100 transition-opacity duration-300" />
+      <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Academia" class="w-full h-40 object-cover rounded-xl opacity-70 hover:opacity-100 transition-opacity duration-300" />
+    </div>
+  </section>
+
+  <!-- separator -->
+  <div class="h-px sep"></div>
+
+  <!-- ═══════════════════════════ CALCULADORA IMC/TMB ═══════════════════════════ -->
+  <section id="calculadora" class="py-24 bg-zinc-900/30">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-14">
+        <p class="text-xs font-heading font-bold uppercase tracking-[0.3em] text-zinc-500 mb-4">Ferramenta gratuita</p>
+        <h2 class="font-heading font-black uppercase text-white leading-tight mb-4"
+            style="font-size: clamp(1.8rem, 4vw, 3rem);">
+          Calculadora IMC & TMB
+        </h2>
+        <p class="text-zinc-400 max-w-xl mx-auto text-sm leading-relaxed">
+          Descubra seu Índice de Massa Corporal e sua Taxa Metabólica Basal em segundos.
+          Depois, receba um treino personalizado direto no seu WhatsApp.
+        </p>
+      </div>
+
+      <!-- Calculator card -->
+      <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-10 shadow-2xl">
+
+        <!-- Form -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
+
+          <!-- Sexo -->
+          <div class="sm:col-span-2 flex flex-col gap-2">
+            <label class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500">Sexo</label>
+            <div class="flex gap-3">
+              <button onclick="setSexo('M')" id="btn-m"
+                class="sex-btn flex-1 py-3 rounded-xl border border-zinc-700 text-sm font-semibold text-zinc-400 transition-all hover:border-zinc-400">
+                Masculino
+              </button>
+              <button onclick="setSexo('F')" id="btn-f"
+                class="sex-btn flex-1 py-3 rounded-xl border border-zinc-700 text-sm font-semibold text-zinc-400 transition-all hover:border-zinc-400">
+                Feminino
+              </button>
+            </div>
+          </div>
+
+          <!-- Idade -->
+          <div class="flex flex-col gap-2">
+            <label for="idade" class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500">Idade</label>
+            <input type="number" id="idade" placeholder="Ex: 25" min="10" max="99"
+              class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white text-sm placeholder:text-zinc-600 transition-colors" />
+          </div>
+
+          <!-- Peso -->
+          <div class="flex flex-col gap-2">
+            <label for="peso" class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500">Peso (kg)</label>
+            <input type="number" id="peso" placeholder="Ex: 75" min="30" max="300" step="0.1"
+              class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white text-sm placeholder:text-zinc-600 transition-colors" />
+          </div>
+
+          <!-- Altura -->
+          <div class="flex flex-col gap-2">
+            <label for="altura" class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500">Altura (cm)</label>
+            <input type="number" id="altura" placeholder="Ex: 175" min="100" max="250"
+              class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white text-sm placeholder:text-zinc-600 transition-colors" />
+          </div>
+
+          <!-- Nível atividade -->
+          <div class="flex flex-col gap-2">
+            <label for="atividade" class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500">Nível de Atividade</label>
+            <select id="atividade"
+              class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-zinc-300 text-sm transition-colors appearance-none cursor-pointer">
+              <option value="1.2">Sedentário (sem exercício)</option>
+              <option value="1.375">Levemente ativo (1-3x/sem)</option>
+              <option value="1.55" selected>Moderadamente ativo (3-5x/sem)</option>
+              <option value="1.725">Muito ativo (6-7x/sem)</option>
+              <option value="1.9">Extremamente ativo (atleta)</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Calc button -->
+        <button onclick="calcular()"
+          class="btn-primary w-full bg-white text-black font-heading font-bold uppercase tracking-wider text-sm py-4 rounded-2xl flex items-center justify-center gap-2">
+          <i data-lucide="calculator" class="w-4 h-4"></i>
+          Calcular agora
+        </button>
+
+        <!-- Results -->
+        <div id="resultado" class="hidden mt-8 space-y-6">
+          <div class="h-px bg-zinc-800"></div>
+
+          <!-- IMC -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500">IMC</span>
+              <span id="imc-valor" class="font-heading font-black text-2xl text-white"></span>
+            </div>
+            <div class="w-full h-2 bg-zinc-800 rounded-full overflow-hidden">
+              <div id="imc-bar" class="imc-bar h-full rounded-full" style="width:0%"></div>
+            </div>
+            <div class="flex justify-between mt-1.5">
+              <span class="text-xs text-zinc-600">Abaixo</span>
+              <span id="imc-label" class="text-xs font-semibold text-center"></span>
+              <span class="text-xs text-zinc-600">Obeso</span>
+            </div>
+          </div>
+
+          <!-- TMB & GET -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-zinc-800/60 rounded-2xl p-5">
+              <p class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500 mb-1">Taxa Metabólica Basal</p>
+              <p id="tmb-valor" class="font-heading font-black text-3xl text-white"></p>
+              <p class="text-xs text-zinc-500 mt-1">kcal/dia em repouso</p>
+            </div>
+            <div class="bg-zinc-800/60 rounded-2xl p-5">
+              <p class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500 mb-1">Gasto Energético Total</p>
+              <p id="get-valor" class="font-heading font-black text-3xl text-white"></p>
+              <p class="text-xs text-zinc-500 mt-1">kcal/dia com atividade</p>
+            </div>
+          </div>
+
+          <!-- Análise -->
+          <div id="analise-box" class="border rounded-2xl p-5">
+            <p id="analise-texto" class="text-sm text-zinc-300 leading-relaxed"></p>
+          </div>
+
+          <!-- WA button dinâmico -->
+          <a id="wa-resultado"
+             href="#"
+             target="_blank"
+             rel="noopener"
+             class="btn-primary flex items-center justify-center gap-3 bg-green-500 text-white font-heading font-bold uppercase tracking-wider text-sm py-4 rounded-2xl w-full hover:bg-green-400">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Receber treino ideal no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- separator -->
+  <div class="h-px sep"></div>
+
+  <!-- ═══════════════════════════ PLANOS ═══════════════════════════ -->
+  <section id="planos" class="py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-16">
+        <p class="text-xs font-heading font-bold uppercase tracking-[0.3em] text-zinc-500 mb-4">Investimento</p>
+        <h2 class="font-heading font-black uppercase text-white leading-tight mb-4"
+            style="font-size: clamp(1.8rem, 4vw, 3rem);">
+          Escolha seu plano
+        </h2>
+        <p class="text-zinc-400 text-sm max-w-sm mx-auto">
+          Sem taxa de matrícula no plano anual. Cancele quando quiser nos demais.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+
+        <!-- Mensal -->
+        <div class="plan-card bg-zinc-900 border border-zinc-800 rounded-2xl p-8 flex flex-col gap-6">
+          <div>
+            <p class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500 mb-2">Mensal</p>
+            <div class="flex items-end gap-1">
+              <span class="text-zinc-400 text-lg font-medium">R$</span>
+              <span class="font-heading font-black text-white" style="font-size: 3.5rem; line-height:1;">60</span>
+              <span class="text-zinc-500 text-sm mb-2">/mês</span>
+            </div>
+            <p class="text-zinc-500 text-xs mt-1">Sem fidelidade</p>
+          </div>
+          <ul class="flex flex-col gap-3 flex-1">
+            <li class="flex items-center gap-3 text-sm text-zinc-300">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-400 flex-shrink-0"></i>
+              Acesso ilimitado ao salão
+            </li>
+            <li class="flex items-center gap-3 text-sm text-zinc-300">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-400 flex-shrink-0"></i>
+              Treino personalizado
+            </li>
+            <li class="flex items-center gap-3 text-sm text-zinc-300">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-400 flex-shrink-0"></i>
+              Avaliação física inclusa
+            </li>
+           <li class="flex items-center gap-3 text-sm text-zinc-300">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-400 flex-shrink-0"></i>
+              Sem taxa de matrícula
+            </li>
+          </ul>
+          <a href="#" id="wa-mensal"
+             target="_blank" rel="noopener"
+             class="btn-outline border border-zinc-600 text-white font-heading font-bold uppercase tracking-wide text-sm py-3.5 rounded-xl text-center">
+            Assinar mensal
+          </a>
+        </div>
+
+        <!-- Semestral -->
+        <div class="plan-card bg-zinc-900 border border-zinc-800 rounded-2xl p-8 flex flex-col gap-6">
+          <div>
+            <p class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500 mb-2">Semestral</p>
+            <div class="flex items-end gap-1">
+              <span class="text-zinc-400 text-lg font-medium">R$</span>
+              <span class="font-heading font-black text-white" style="font-size: 3.5rem; line-height:1;">55</span>
+              <span class="text-zinc-500 text-sm mb-2">/mês</span>
+            </div>
+            <p class="text-zinc-500 text-xs mt-1">R$ 330 cobrado a cada 6 meses</p>
+          </div>
+          <ul class="flex flex-col gap-3 flex-1">
+            <li class="flex items-center gap-3 text-sm text-zinc-300">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-400 flex-shrink-0"></i>
+              Acesso ilimitado ao salão
+            </li>
+            <li class="flex items-center gap-3 text-sm text-zinc-300">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-400 flex-shrink-0"></i>
+              Treino personalizado
+            </li>
+            <li class="flex items-center gap-3 text-sm text-zinc-300">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-400 flex-shrink-0"></i>
+              Avaliação física inclusa
+            </li>
+           <li class="flex items-center gap-3 text-sm text-zinc-300">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-400 flex-shrink-0"></i>
+              Sem taxa de matrícula
+            </li>
+            <li class="flex items-center gap-3 text-sm text-zinc-300">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-400 flex-shrink-0"></i>
+              Economia de R$ 120/ano
+            </li>
+          </ul>
+          <a href="#" id="wa-semestral"
+             target="_blank" rel="noopener"
+             class="btn-outline border border-zinc-600 text-white font-heading font-bold uppercase tracking-wide text-sm py-3.5 rounded-xl text-center">
+            Assinar semestral
+          </a>
+        </div>
+
+        <!-- Anual (destaque) -->
+        <div class="plan-card plan-featured bg-zinc-900 border-2 border-white rounded-2xl p-8 flex flex-col gap-6 relative">
+          <!-- Selo -->
+          <div class="absolute -top-0 left-1/2 -translate-x-1/2">
+            <span class="bg-white text-black font-heading font-black text-xs uppercase tracking-widest px-4 py-1.5 rounded-full whitespace-nowrap">
+              ⭐ Melhor Custo-Benefício
+            </span>
+          </div>
+
+          <div class="mt-2">
+            <p class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-400 mb-2">Anual</p>
+            <div class="flex items-end gap-1">
+              <span class="text-zinc-300 text-lg font-medium">R$</span>
+              <span class="font-heading font-black text-white" style="font-size: 3.5rem; line-height:1;">50</span>
+              <span class="text-zinc-400 text-sm mb-2">/mês</span>
+            </div>
+            <p class="text-zinc-400 text-xs mt-1">R$ 600 cobrado anualmente · <span class="text-green-400 font-semibold">Sem matrícula</span></p>
+          </div>
+
+          <ul class="flex flex-col gap-3 flex-1">
+            <li class="flex items-center gap-3 text-sm text-white font-medium">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-white flex-shrink-0"></i>
+              Acesso ilimitado ao salão
+            </li>
+            <li class="flex items-center gap-3 text-sm text-white font-medium">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-white flex-shrink-0"></i>
+              Treino personalizado
+            </li>
+            <li class="flex items-center gap-3 text-sm text-white font-medium">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-white flex-shrink-0"></i>
+              Avaliação física inclusa
+            </li>
+            <li class="flex items-center gap-3 text-sm text-white font-medium">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-white flex-shrink-0"></i>
+              Sem taxa de matrícula
+            </li>
+            <li class="flex items-center gap-3 text-sm text-white font-medium">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-white flex-shrink-0"></i>
+              Economia de R$ 480/ano
+            </li>
+          </ul>
+
+          <a href="#" id="wa-anual"
+             target="_blank" rel="noopener"
+             class="btn-primary bg-white text-black font-heading font-bold uppercase tracking-wide text-sm py-3.5 rounded-xl text-center">
+            Assinar anual
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Note -->
+      <p class="text-center text-xs text-zinc-600 mt-8 font-medium">
+        * Preços promocionais sujeitos a disponibilidade. Consulte nossa equipe para condições especiais.
+      </p>
+    </div>
+  </section>
+
+  <!-- separator -->
+  <div class="h-px sep"></div>
+
+  <!-- ═══════════════════════════ DEPOIMENTOS ═══════════════════════════ -->
+  <section class="py-24 bg-zinc-900/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <p class="text-xs font-heading font-bold uppercase tracking-[0.3em] text-zinc-500 mb-4">Resultados reais</p>
+        <h2 class="font-heading font-black uppercase text-white" style="font-size: clamp(1.8rem, 4vw, 3rem);">
+          Quem entrou, não sai.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex flex-col gap-4">
+          <div class="flex gap-1">
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          </div>
+          <p class="text-zinc-300 text-sm leading-relaxed italic">
+            "Treinei em várias academias antes. Nenhuma tem a atenção dos instrutores da Impacto. Em 4 meses perdi 12kg e ganhei qualidade de vida."
+          </p>
+          <div class="flex items-center gap-3 mt-auto pt-4 border-t border-zinc-800">
+            <div class="w-9 h-9 rounded-full bg-zinc-700 flex items-center justify-center font-heading font-bold text-white text-sm">RM</div>
+            <div>
+              <p class="text-white text-sm font-semibold">Rafael M.</p>
+              <p class="text-zinc-500 text-xs">Aluno há 8 meses</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex flex-col gap-4">
+          <div class="flex gap-1">
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          </div>
+          <p class="text-zinc-300 text-sm leading-relaxed italic">
+            "O ambiente é sério, os professores são atenciosos e os equipamentos estão sempre em dia. Recomendo demais pra quem quer resultado de verdade."
+          </p>
+          <div class="flex items-center gap-3 mt-auto pt-4 border-t border-zinc-800">
+            <div class="w-9 h-9 rounded-full bg-zinc-700 flex items-center justify-center font-heading font-bold text-white text-sm">CS</div>
+            <div>
+              <p class="text-white text-sm font-semibold">Carla S.</p>
+              <p class="text-zinc-500 text-xs">Aluna há 1 ano</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex flex-col gap-4">
+          <div class="flex gap-1">
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+          </div>
+          <p class="text-zinc-300 text-sm leading-relaxed italic">
+            "Horário de funcionamento perfeito. Consigo treinar cedo antes do trabalho. Nunca lotado e o treino é ajustado periodicamente. Top!"
+          </p>
+          <div class="flex items-center gap-3 mt-auto pt-4 border-t border-zinc-800">
+            <div class="w-9 h-9 rounded-full bg-zinc-700 flex items-center justify-center font-heading font-bold text-white text-sm">LF</div>
+            <div>
+              <p class="text-white text-sm font-semibold">Lucas F.</p>
+              <p class="text-zinc-500 text-xs">Aluno há 6 meses</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- separator -->
+  <div class="h-px sep"></div>
+
+  <!-- ═══════════════════════════ RODAPÉ ═══════════════════════════ -->
+  <footer id="contato" class="pt-20 pb-8 bg-base">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Top grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-16 border-b border-zinc-800">
+
+        <!-- Brand -->
+        <div class="lg:col-span-1">
+          <p class="font-heading font-black text-2xl tracking-widest uppercase text-white mb-4">
+            IMPACTO<span class="text-zinc-600">.</span>
+          </p>
+          <p class="text-zinc-500 text-sm leading-relaxed mb-6">
+            Mais do que uma academia. Um ambiente de evolução constante para quem leva a vida a sério.
+          </p>
+          <!-- Social -->
+          <a href="https://www.instagram.com/impact.oacademia/" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-sm font-medium group">
+            <div class="w-8 h-8 rounded-lg overflow-hidden group-hover:opacity-80 transition-opacity">
+              <img src="instagram.jpg" alt="Instagram" class="w-full h-full object-cover" />
+            </div>
+            @impact.oacademia
+          </a>
+        </div>
+
+        <!-- Endereço -->
+        <div>
+          <p class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500 mb-5">Localização</p>
+          <div class="flex gap-3 mb-4">
+            <i data-lucide="map-pin" class="w-4 h-4 text-zinc-500 flex-shrink-0 mt-0.5"></i>
+            <p class="text-zinc-400 text-sm leading-relaxed">
+               Rua Francelino de Souza, 123<br/>Centro – Teotonio Vilela, AL<br/>CEP: 57265-081
+            </p>
+          </div>
+          <div class="flex gap-3">
+            <i data-lucide="phone" class="w-4 h-4 text-zinc-500 flex-shrink-0 mt-0.5"></i>
+            <p class="text-zinc-400 text-sm">(82) 98125-2481</p>
+          </div>
+        </div>
+
+        <!-- Horários -->
+        <div>
+          <p class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500 mb-5">Horários</p>
+          <ul class="space-y-2">
+            <li class="flex justify-between text-sm">
+              <span class="text-zinc-500">Segunda a Sexta</span>
+              <span class="text-zinc-300 font-medium">05h30 – 21h30</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-zinc-500">Sábado</span>
+              <span class="text-zinc-300 font-medium">09h – 13h</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-zinc-500">Domingo</span>
+              <span class="text-zinc-500 font-medium">Consulte</span>
+            </li>
+            <li class="flex justify-between text-sm">
+              <span class="text-zinc-500">Feriados</span>
+              <span class="text-zinc-500 font-medium">Consulte</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- CTA footer -->
+        <div>
+          <p class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500 mb-5">Pronto para começar?</p>
+          <p class="text-zinc-400 text-sm mb-6 leading-relaxed">
+            Faça sua <strong class="text-white">primeira aula gratuita</strong> e sinta a diferença sem compromisso.
+          </p>
+          <a id="wa-footer" href="#" target="_blank" rel="noopener"
+             class="btn-primary inline-flex items-center gap-2 bg-white text-black font-heading font-bold uppercase tracking-wide text-xs px-6 py-3 rounded-full w-full justify-center">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            Falar no WhatsApp
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Bottom -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-zinc-600 text-xs text-center sm:text-left">
+          © 2024 Impacto Academia · Todos os direitos reservados.
+        </p>
+        <p class="text-zinc-700 text-xs">
+          Desenvolvido com ♥ para quem não para de crescer.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════ FLOATING WA ═══════════════════════════ -->
+  <a id="wa-float"
+     href="#"
+     target="_blank"
+     rel="noopener"
+     class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center transition-colors shadow-xl"
+     title="Falar no WhatsApp">
+    <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- ═══════════════════════════ JAVASCRIPT ═══════════════════════════ -->
+  <script>
+    // ─── Config ───────────────────────────────────────────
+    const WA_NUMBER = '5582981252481'; 
+
+    function waLink(msg) {
+      return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+    }
+
+    // ─── WhatsApp links iniciais ───────────────────────────
+    const MSG_HERO = '👋 Olá! Vim pelo site e quero saber mais sobre a aula grátis na Impacto Academia!';
+    const MSG_FOOTER = '👋 Olá! Quero saber mais sobre a Impacto Academia e fazer uma aula grátis!';
+    const MSG_MENSAL = '👋 Olá! Tenho interesse no plano Mensal da Impacto Academia. Podem me ajudar?';
+    const MSG_SEMESTRAL = '👋 Olá! Tenho interesse no plano Semestral da Impacto Academia. Podem me ajudar?';
+    const MSG_ANUAL = '👋 Olá! Tenho interesse no plano Anual da Impacto Academia. Podem me ajudar?';
+
+    document.getElementById('cta-hero-wa').href = waLink(MSG_HERO);
+    document.getElementById('wa-footer').href = waLink(MSG_FOOTER);
+    document.getElementById('wa-float').href = waLink(MSG_FOOTER);
+    document.getElementById('wa-mensal').href = waLink(MSG_MENSAL);
+    document.getElementById('wa-semestral').href = waLink(MSG_SEMESTRAL);
+    document.getElementById('wa-anual').href = waLink(MSG_ANUAL);
+
+    // ─── Navbar scroll ────────────────────────────────────
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // ─── Mobile menu ──────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // ─── Calculadora IMC / TMB ────────────────────────────
+    let sexo = 'M';
+
+    function setSexo(s) {
+      sexo = s;
+      document.getElementById('btn-m').className = s === 'M'
+        ? 'sex-btn flex-1 py-3 rounded-xl border border-white text-sm font-semibold text-white transition-all bg-zinc-800'
+        : 'sex-btn flex-1 py-3 rounded-xl border border-zinc-700 text-sm font-semibold text-zinc-400 transition-all hover:border-zinc-400';
+      document.getElementById('btn-f').className = s === 'F'
+        ? 'sex-btn flex-1 py-3 rounded-xl border border-white text-sm font-semibold text-white transition-all bg-zinc-800'
+        : 'sex-btn flex-1 py-3 rounded-xl border border-zinc-700 text-sm font-semibold text-zinc-400 transition-all hover:border-zinc-400';
+    }
+
+    // Set default
+    setSexo('M');
+
+    function calcular() {
+      const idade = parseInt(document.getElementById('idade').value);
+      const peso = parseFloat(document.getElementById('peso').value);
+      const alturaCm = parseFloat(document.getElementById('altura').value);
+      const fator = parseFloat(document.getElementById('atividade').value);
+
+      if (!idade || !peso || !alturaCm || isNaN(idade) || isNaN(peso) || isNaN(alturaCm)) {
+        alert('Por favor, preencha todos os campos corretamente.');
+        return;
+      }
+
+      const alturaM = alturaCm / 100;
+
+      // IMC
+      const imc = peso / (alturaM * alturaM);
+      const imcFixed = imc.toFixed(1);
+
+      // TMB – Fórmula de Mifflin-St Jeor
+      let tmb;
+      if (sexo === 'M') {
+        tmb = 10 * peso + 6.25 * alturaCm - 5 * idade + 5;
+      } else {
+        tmb = 10 * peso + 6.25 * alturaCm - 5 * idade - 161;
+      }
+      tmb = Math.round(tmb);
+
+      // GET (Gasto Energético Total)
+      const get = Math.round(tmb * fator);
+
+      // IMC classification
+      let imcLabel, imcColor, barColor, barWidth, analise;
+
+      if (imc < 18.5) {
+        imcLabel = 'Abaixo do peso'; imcColor = 'text-blue-400'; barColor = 'bg-blue-400'; barWidth = 15;
+        analise = `Seu IMC de <strong class="text-white">${imcFixed}</strong> indica que você está abaixo do peso ideal. Um treino de ganho de massa muscular aliado a uma alimentação hipercalórica pode transformar seu físico. Nossas turmas de musculação são perfeitas para isso!`;
+      } else if (imc < 24.9) {
+        imcLabel = 'Peso normal ✓'; imcColor = 'text-green-400'; barColor = 'bg-green-400'; barWidth = 38;
+        analise = `Parabéns! Seu IMC de <strong class="text-white">${imcFixed}</strong> está na faixa saudável. Agora é hora de <strong class="text-white">definir, hipertrofiar e evoluir</strong>. Um treino bem montado vai levar seu físico ao próximo nível.`;
+      } else if (imc < 29.9) {
+        imcLabel = 'Sobrepeso'; imcColor = 'text-yellow-400'; barColor = 'bg-yellow-400'; barWidth = 60;
+        analise = `Seu IMC de <strong class="text-white">${imcFixed}</strong> indica sobrepeso. Com o treino certo e orientação nutricional, você pode perder gordura e ganhar músculo ao mesmo tempo. É o momento ideal para começar!`;
+      } else if (imc < 34.9) {
+        imcLabel = 'Obesidade Grau I'; imcColor = 'text-orange-400'; barColor = 'bg-orange-400'; barWidth = 78;
+        analise = `Seu IMC de <strong class="text-white">${imcFixed}</strong> aponta Obesidade Grau I. Com acompanhamento profissional e treino adaptado à sua condição atual, você pode transformar completamente seu corpo de forma segura.`;
+      } else {
+        imcLabel = 'Obesidade Grau II+'; imcColor = 'text-red-400'; barColor = 'bg-red-400'; barWidth = 95;
+        analise = `Seu IMC de <strong class="text-white">${imcFixed}</strong> requer atenção. Recomendamos uma avaliação médica e um plano de treino personalizado e progressivo. Na Impacto, nossos instrutores têm experiência com todos os perfis de alunos.`;
+      }
+
+      // Render results
+      document.getElementById('imc-valor').textContent = imcFixed;
+      document.getElementById('imc-label').className = `text-xs font-semibold text-center ${imcColor}`;
+      document.getElementById('imc-label').textContent = imcLabel;
+      document.getElementById('imc-bar').className = `imc-bar h-full rounded-full ${barColor}`;
+      setTimeout(() => {
+        document.getElementById('imc-bar').style.width = `${barWidth}%`;
+      }, 50);
+
+      document.getElementById('tmb-valor').textContent = tmb.toLocaleString('pt-BR');
+      document.getElementById('get-valor').textContent = get.toLocaleString('pt-BR');
+
+      document.getElementById('analise-texto').innerHTML = analise;
+      const analiseBox = document.getElementById('analise-box');
+      analiseBox.className = `border rounded-2xl p-5 border-zinc-700 bg-zinc-800/40`;
+
+      // Dynamic WA button with results
+      const sexoLabel = sexo === 'M' ? 'Masculino' : 'Feminino';
+      const fatorLabel = document.getElementById('atividade').options[document.getElementById('atividade').selectedIndex].text;
+      const msgResultado = `👋 Olá! Calculei meu IMC e TMB pelo site da Impacto Academia e gostaria de receber um treino personalizado!\n\n📊 *Meus dados:*\n• Sexo: ${sexoLabel}\n• Idade: ${idade} anos\n• Peso: ${peso} kg\n• Altura: ${alturaCm} cm\n• Atividade: ${fatorLabel}\n\n📈 *Resultados:*\n• IMC: ${imcFixed} (${imcLabel})\n• TMB: ${tmb} kcal/dia\n• Gasto Total: ${get} kcal/dia\n\nPode me indicar o treino ideal?`;
+
+      document.getElementById('wa-resultado').href = waLink(msgResultado);
+
+      // Show results
+      const resultDiv = document.getElementById('resultado');
+      resultDiv.classList.remove('hidden');
+      resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      // Re-init icons in result section
+      lucide.createIcons();
+    }
+
+    // ─── Lucide icons ─────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+    // Also run now in case DOMContentLoaded already fired
+    if (document.readyState !== 'loading') {
+      lucide.createIcons();
+    }
+
+    // ─── Smooth scroll offset for fixed navbar ────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 72;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

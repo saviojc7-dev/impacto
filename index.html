@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IMPACTO ACADEMIA – Discipline. Results. Power.</title>
-  <meta name="description" content="Impacto Academia: equipamentos modernos, acompanhamento profissional e horários flexíveis. Transforme seu corpo agora." />
+  <title>Impacto Academia em Teotônio Vilela – AL | Treino e Planos</title>
+  <meta name="description" content="Treine na Impacto Academia em Teotônio Vilela, AL. Conheça nossos equipamentos, acompanhamento profissional e planos." />
 
   <!-- Prévia ao compartilhar no WhatsApp e redes sociais -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
-  <meta property="og:title" content="Impacto Academia" />
-  <meta property="og:description" content="Equipamentos modernos, acompanhamento profissional e horários flexíveis. Transforme seu corpo agora." />
+  <meta property="og:title" content="Impacto Academia em Teotônio Vilela – AL" />
+  <meta property="og:description" content="Treine na Impacto Academia em Teotônio Vilela, AL. Conheça nossos equipamentos, acompanhamento profissional e planos." />
   <meta property="og:image" content="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&amp;q=85&amp;fm=jpg&amp;fit=crop&amp;sat=-100" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -263,6 +263,10 @@
     <!-- Content -->
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
 
+      <p class="font-heading font-bold text-sm sm:text-base uppercase tracking-[0.2em] text-white mb-5">
+        Teotônio Vilela – AL
+      </p>
+
       <!-- Badge -->
       <div class="inline-flex items-center gap-2 bg-zinc-900/80 border border-zinc-700 rounded-full px-4 py-1.5 mb-8">
         <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
@@ -434,10 +438,22 @@
 
     <!-- Gallery strip -->
     <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-3 rounded-2xl overflow-hidden">
-      <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Treino" class="w-full h-40 object-cover rounded-xl opacity-70 hover:opacity-100 transition-opacity duration-300" />
-      <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Musculação" class="w-full h-40 object-cover rounded-xl opacity-70 hover:opacity-100 transition-opacity duration-300" />
-      <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Treino pesado" class="w-full h-40 object-cover rounded-xl opacity-70 hover:opacity-100 transition-opacity duration-300" />
-      <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Academia" class="w-full h-40 object-cover rounded-xl opacity-70 hover:opacity-100 transition-opacity duration-300" />
+      <figure class="relative group rounded-xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Treino" class="w-full h-40 object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+        <figcaption class="absolute inset-0 flex items-center justify-center bg-black/35 font-heading font-black uppercase tracking-wider text-white text-lg sm:text-xl">Foco</figcaption>
+      </figure>
+      <figure class="relative group rounded-xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Musculação" class="w-full h-40 object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+        <figcaption class="absolute inset-0 flex items-center justify-center bg-black/35 font-heading font-black uppercase tracking-wider text-white text-lg sm:text-xl">Evolução</figcaption>
+      </figure>
+      <figure class="relative group rounded-xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Treino pesado" class="w-full h-40 object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+        <figcaption class="absolute inset-0 flex items-center justify-center bg-black/35 font-heading font-black uppercase tracking-wider text-white text-lg sm:text-xl">Disciplina</figcaption>
+      </figure>
+      <figure class="relative group rounded-xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=600&q=80&fm=jpg&fit=crop&sat=-100" alt="Academia" class="w-full h-40 object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
+        <figcaption class="absolute inset-0 flex items-center justify-center bg-black/35 font-heading font-black uppercase tracking-wider text-white text-lg sm:text-xl">Superação</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -515,6 +531,18 @@
               <option value="1.55" selected>Moderadamente ativo (3-5x/sem)</option>
               <option value="1.725">Muito ativo (6-7x/sem)</option>
               <option value="1.9">Extremamente ativo (atleta)</option>
+            </select>
+          </div>
+
+          <!-- Foco do treino -->
+          <div class="flex flex-col gap-2">
+            <label for="foco" class="text-xs font-heading font-bold uppercase tracking-widest text-zinc-500">Seu foco é?</label>
+            <select id="foco"
+              class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-zinc-300 text-sm transition-colors appearance-none cursor-pointer">
+              <option value="hipertrofia" selected>Hipertrofia</option>
+              <option value="emagrecimento">Emagrecimento</option>
+              <option value="ganho-de-massa">Ganho de massa</option>
+              <option value="nao-sei">Ainda não sei</option>
             </select>
           </div>
 
@@ -596,7 +624,7 @@
           Escolha seu plano
         </h2>
         <p class="text-zinc-400 text-sm max-w-sm mx-auto">
-          Nenhum plano tem taxa de matrícula. O mensal é sem fidelidade.
+          Sem taxa de matrícula. O plano mensal é cobrado mês a mês e não tem fidelidade. Confira abaixo o valor e a frequência de cobrança de cada plano.
         </p>
       </div>
 
@@ -611,7 +639,7 @@
               <span class="font-heading font-black text-white" style="font-size: 3.5rem; line-height:1;">60</span>
               <span class="text-zinc-400 text-sm font-medium mb-2 whitespace-nowrap">/mês</span>
             </div>
-            <p class="text-zinc-500 text-xs mt-1">Sem fidelidade</p>
+            <p class="text-zinc-500 text-xs mt-1">R$ 60 cobrados por mês · sem fidelidade</p>
           </div>
           <ul class="flex flex-col gap-3 flex-1">
             <li class="flex items-center gap-3 text-sm text-zinc-300">
@@ -647,7 +675,7 @@
               <span class="font-heading font-black text-white" style="font-size: 3.5rem; line-height:1;">55</span>
               <span class="text-zinc-400 text-sm font-medium mb-2 whitespace-nowrap">/mês</span>
             </div>
-            <p class="text-zinc-500 text-xs mt-1">R$ 330 cobrado a cada 6 meses</p>
+            <p class="text-zinc-500 text-xs mt-1">R$ 330 cobrados a cada 6 meses · R$ 55/mês equivalente</p>
           </div>
           <ul class="flex flex-col gap-3 flex-1">
             <li class="flex items-center gap-3 text-sm text-zinc-300">
@@ -694,7 +722,7 @@
               <span class="font-heading font-black text-white" style="font-size: 3.5rem; line-height:1;">50</span>
               <span class="text-zinc-300 text-sm font-medium mb-2 whitespace-nowrap">/mês</span>
             </div>
-            <p class="text-zinc-400 text-xs mt-1">R$ 600 cobrado anualmente</p>
+            <p class="text-zinc-400 text-xs mt-1">R$ 600 cobrados a cada 12 meses · R$ 50/mês equivalente</p>
           </div>
 
           <ul class="flex flex-col gap-3 flex-1">
@@ -902,7 +930,7 @@
           © 2026 Impacto Academia · Todos os direitos reservados.
         </p>
         <p class="text-zinc-700 text-xs">
-          Desenvolvido com ♥ para quem não para de crescer.
+          Desenvolvido por Sávio
         </p>
       </div>
     </div>
@@ -1071,7 +1099,9 @@
       // Dynamic WA button with results
       const sexoLabel = sexo === 'M' ? 'Masculino' : 'Feminino';
       const fatorLabel = document.getElementById('atividade').options[document.getElementById('atividade').selectedIndex].text;
-      const msgResultado = `👋 Olá! Calculei meu IMC e TMB pelo site da Impacto Academia e gostaria de receber um treino personalizado!\n\n📊 *Meus dados:*\n• Sexo: ${sexoLabel}\n• Idade: ${idade} anos\n• Peso: ${peso} kg\n• Altura: ${alturaCm} cm\n• Atividade: ${fatorLabel}\n\n📈 *Resultados:*\n• IMC: ${imcFixed} (${imcLabel})\n• TMB: ${tmb} kcal/dia\n• Gasto Total: ${get} kcal/dia\n\nPode me indicar o treino ideal?`;
+      const focoSelect = document.getElementById('foco');
+      const focoLabel = focoSelect.options[focoSelect.selectedIndex].text;
+      const msgResultado = `👋 Olá! Calculei meu IMC e TMB pelo site da Impacto Academia e gostaria de receber um treino personalizado!\n\n📊 *Meus dados:*\n• Sexo: ${sexoLabel}\n• Idade: ${idade} anos\n• Peso: ${peso} kg\n• Altura: ${alturaCm} cm\n• Atividade: ${fatorLabel}\n• Foco: ${focoLabel}\n\n📈 *Resultados:*\n• IMC: ${imcFixed} (${imcLabel})\n• TMB: ${tmb} kcal/dia\n• Gasto Total: ${get} kcal/dia\n\nPode me indicar o treino ideal?`;
 
       document.getElementById('wa-resultado').href = waLink(msgResultado);
 

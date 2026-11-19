@@ -27,83 +27,6 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
-  <!-- Avaliações oficiais do Google Maps -->
-  <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      const container = document.getElementById('google-reviews-list');
-      const resumo = document.getElementById('google-reviews-summary');
-      if (!container || !resumo) return;
-
-      try {
-        const resposta = await fetch('https://places.googleapis.com/v1/places/ChIJN45ZA6QkBAcRUEVigCtTVXs', {
-          headers: {
-            'X-Goog-Api-Key': 'AIzaSyCoLlTnNdc1DJkueLc7A7vG0RK0xgLLCyk',
-            'X-Goog-FieldMask': 'displayName,rating,userRatingCount,reviews'
-          }
-        });
-        if (!resposta.ok) throw new Error(`Google Places: ${resposta.status}`);
-
-        const local = await resposta.json();
-        resumo.textContent = `${Number(local.rating || 0).toLocaleString('pt-BR')}★ no Google · ${local.userRatingCount || 0} avaliações`;
-        container.replaceChildren();
-
-        if (!local.reviews?.length) {
-          const aviso = document.createElement('p');
-          aviso.className = 'text-zinc-400 text-sm md:col-span-3 text-center';
-          aviso.textContent = 'Veja as avaliações mais recentes diretamente no Google Maps.';
-          container.append(aviso);
-          return;
-        }
-
-        local.reviews.slice(0, 3).forEach((avaliacao) => {
-          const autor = avaliacao.authorAttribution || {};
-          const card = document.createElement('article');
-          card.className = 'bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex flex-col gap-4';
-
-          const estrelas = document.createElement('p');
-          estrelas.className = 'text-yellow-400 text-sm tracking-wider';
-          estrelas.textContent = `${'★'.repeat(Math.round(avaliacao.rating || 0))} ${avaliacao.rating || ''}`;
-
-          const texto = document.createElement('p');
-          texto.className = 'text-zinc-300 text-sm leading-relaxed italic';
-          texto.textContent = `“${avaliacao.originalText?.text || 'Avaliação no Google'}”`;
-
-          const rodape = document.createElement('a');
-          rodape.className = 'flex items-center gap-3 mt-auto pt-4 border-t border-zinc-800 hover:opacity-80 transition-opacity';
-          rodape.href = avaliacao.googleMapsUri || autor.uri || 'https://www.google.com/maps/place/?q=place_id:ChIJN45ZA6QkBAcRUEVigCtTVXs';
-          rodape.target = '_blank';
-          rodape.rel = 'noopener';
-
-          const foto = document.createElement('img');
-          foto.className = 'w-9 h-9 rounded-full bg-zinc-700 object-cover';
-          foto.alt = '';
-          if (autor.photoUri) foto.src = autor.photoUri;
-
-          const nome = document.createElement('p');
-          nome.className = 'text-white text-sm font-semibold';
-          nome.textContent = autor.displayName || 'Usuário do Google';
-
-          const origem = document.createElement('p');
-          origem.className = 'text-zinc-500 text-xs';
-          origem.textContent = 'Avaliação verificada no Google';
-
-          const dadosAutor = document.createElement('div');
-          dadosAutor.append(nome, origem);
-          rodape.append(foto, dadosAutor);
-          card.append(estrelas, texto, rodape);
-          container.append(card);
-        });
-      } catch {
-        resumo.textContent = 'Avaliações no Google';
-        container.replaceChildren();
-        const aviso = document.createElement('p');
-        aviso.className = 'text-zinc-400 text-sm md:col-span-3 text-center';
-        aviso.textContent = 'Não foi possível carregar as avaliações agora. Veja todas diretamente no Google Maps.';
-        container.append(aviso);
-      }
-    });
-  </script>
-
   <script>
     tailwind.config = {
       theme: {
@@ -673,7 +596,7 @@
           Escolha seu plano
         </h2>
         <p class="text-zinc-400 text-sm max-w-sm mx-auto">
-          Sem taxa de matrícula no plano anual. Cancele quando quiser nos demais.
+          Nenhum plano tem taxa de matrícula. O mensal é sem fidelidade.
         </p>
       </div>
 
@@ -771,7 +694,7 @@
               <span class="font-heading font-black text-white" style="font-size: 3.5rem; line-height:1;">50</span>
               <span class="text-zinc-400 text-sm mb-2">/mês</span>
             </div>
-            <p class="text-zinc-400 text-xs mt-1">R$ 600 cobrado anualmente · <span class="text-green-400 font-semibold">Sem matrícula</span></p>
+            <p class="text-zinc-400 text-xs mt-1">R$ 600 cobrado anualmente</p>
           </div>
 
           <ul class="flex flex-col gap-3 flex-1">
@@ -824,10 +747,61 @@
         <h2 class="font-heading font-black uppercase text-white" style="font-size: clamp(1.8rem, 4vw, 3rem);">
           O que dizem sobre a Impacto.
         </h2>
-        <p id="google-reviews-summary" class="text-zinc-400 text-sm mt-4">Carregando avaliações do Google…</p>
+        <p id="google-reviews-summary" class="text-zinc-400 text-sm mt-4">4,6★ no Google · 47 avaliações</p>
       </div>
-      <div id="google-reviews-list" class="grid grid-cols-1 md:grid-cols-3 gap-6" aria-live="polite">
-        <p class="text-zinc-400 text-sm md:col-span-3 text-center">Carregando avaliações oficiais…</p>
+      <div id="google-reviews-list" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Avaliação 1 -->
+        <article class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex flex-col gap-4">
+          <p class="text-yellow-400 text-sm tracking-wider" aria-label="5 de 5 estrelas">★★★★★</p>
+          <p class="text-zinc-300 text-sm leading-relaxed italic">
+            “Com certeza melhor academia da cidade. Só pelo atendimento e atenção dos instrutores com os alunos merece as 5 estrelas.”
+          </p>
+          <a href="https://www.google.com/maps/place/?q=place_id:ChIJN45ZA6QkBAcRUEVigCtTVXs"
+             target="_blank" rel="noopener"
+             class="flex items-center gap-3 mt-auto pt-4 border-t border-zinc-800 hover:opacity-80 transition-opacity">
+            <span class="w-9 h-9 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-xs font-semibold text-zinc-200 flex-shrink-0">CO</span>
+            <div>
+              <p class="text-white text-sm font-semibold">Chelton Oliveira</p>
+              <p class="text-zinc-500 text-xs">Avaliação no Google</p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Avaliação 2 -->
+        <article class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex flex-col gap-4">
+          <p class="text-yellow-400 text-sm tracking-wider" aria-label="5 de 5 estrelas">★★★★★</p>
+          <p class="text-zinc-300 text-sm leading-relaxed italic">
+            “Lugar muito bom, tem pessoas atenciosas e amigáveis, Wi-Fi, água não falta, trabalham com musculação, jump, aeróbica, funcional, fisioterapia e crossfit. O lugar é top de linha.”
+          </p>
+          <a href="https://www.google.com/maps/place/?q=place_id:ChIJN45ZA6QkBAcRUEVigCtTVXs"
+             target="_blank" rel="noopener"
+             class="flex items-center gap-3 mt-auto pt-4 border-t border-zinc-800 hover:opacity-80 transition-opacity">
+            <span class="w-9 h-9 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-xs font-semibold text-zinc-200 flex-shrink-0">AA</span>
+            <div>
+              <p class="text-white text-sm font-semibold">Alberto Araujo</p>
+              <p class="text-zinc-500 text-xs">Avaliação no Google</p>
+            </div>
+          </a>
+        </article>
+
+        <!-- Avaliação 3 -->
+        <article class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 flex flex-col gap-4">
+          <p class="text-yellow-400 text-sm tracking-wider" aria-label="5 de 5 estrelas">★★★★★</p>
+          <p class="text-zinc-300 text-sm leading-relaxed italic">
+            “Ótima academia com bons profissionais e um ambiente muito bom para várias práticas de exercícios.”
+          </p>
+          <a href="https://www.google.com/maps/place/?q=place_id:ChIJN45ZA6QkBAcRUEVigCtTVXs"
+             target="_blank" rel="noopener"
+             class="flex items-center gap-3 mt-auto pt-4 border-t border-zinc-800 hover:opacity-80 transition-opacity">
+            <span class="w-9 h-9 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-xs font-semibold text-zinc-200 flex-shrink-0">WV</span>
+            <div>
+              <p class="text-white text-sm font-semibold">Wilson Vieira</p>
+              <p class="text-zinc-500 text-xs">Avaliação no Google</p>
+            </div>
+          </a>
+        </article>
+
       </div>
       <p class="text-center mt-8">
         <a href="https://www.google.com/maps/place/?q=place_id:ChIJN45ZA6QkBAcRUEVigCtTVXs"
